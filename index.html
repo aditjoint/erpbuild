@@ -56,611 +56,309 @@
     }
   </style>
 </head>
+
+  <style>
+    /* ---------- Color & Typography (Corporate Blue / White) ---------- */
+    :root{
+      --bg: #f7fbff;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0a66c2; /* primary corporate blue */
+      --accent-2: #075aa6;
+      --accent-weak: #e8f1fb;
+      --radius: 12px;
+      --maxw: 1100px;
+      --shadow: 0 8px 28px rgba(11,35,73,0.08);
+      --glass: rgba(255,255,255,0.6);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%;margin:0;background:var(--bg);color:#0b1220; -webkit-font-smoothing:antialiased;}
+    a{color:var(--accent); text-decoration:none;}
+    img{max-width:100%; display:block; height:auto; border-radius:8px;}
+
+    .wrap{max-width:var(--maxw); margin:36px auto; padding:24px; box-sizing:border-box;}
+
+    /* ---------- Header / Hero ---------- */
+    .hero{
+      background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
+      border-radius: var(--radius);
+      padding:28px;
+      display:flex;
+      gap:24px;
+      align-items:center;
+      box-shadow:var(--shadow);
+    }
+    .hero-left{flex:1; padding:6px 12px;}
+    .hero-right{width:420px; flex-shrink:0;}
+    .eyebrow{display:inline-block;background:var(--accent-weak); color:var(--accent-2); padding:6px 10px; border-radius:999px; font-weight:600; font-size:0.86rem;}
+    h1{margin:12px 0 6px; font-size:1.9rem; color:#05243a;}
+    p.lead{color:var(--muted); margin:10px 0 16px; line-height:1.6;}
+    .cta-row{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:10px; font-weight:600; cursor:pointer; border:0;}
+    .btn-primary{background:var(--accent); color:white; box-shadow: 0 6px 18px rgba(10,102,194,0.18);}
+    .btn-outline{background:transparent; color:var(--accent-2); border:1.5px solid var(--accent-weak);}
+
+    .hero-meta{margin-top:14px;color:var(--muted);font-size:0.95rem;}
+    .hero-right .card{background:var(--card); padding:16px; border-radius:10px; box-shadow:0 6px 20px rgba(9,30,66,0.04);}
+
+    /* ---------- Partner / Product Block ---------- */
+    .partner{
+      display:flex; gap:18px; align-items:center; margin:28px 0; padding:16px; background:linear-gradient(90deg,#f7fbff, #ffffff); border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .partner-logo{width:96px; height:96px; padding:8px; background:var(--accent-weak); border-radius:8px; display:flex; align-items:center; justify-content:center;}
+    .partner h3{margin:0; font-size:1.2rem; color:#05304a;}
+    .partner p{margin:6px 0 0; color:var(--muted);}
+
+    /* ---------- Grid sections ---------- */
+    .grid{display:grid; gap:18px;}
+    .cols-3{grid-template-columns:repeat(3,1fr);}
+    .cols-2{grid-template-columns:repeat(2,1fr);}
+    .cols-4{grid-template-columns:repeat(4,1fr);}
+    .card{
+      background:var(--card); padding:18px; border-radius:12px; box-shadow:0 8px 24px rgba(8,24,48,0.04);
+    }
+    .card h4{margin:0 0 8px; color:#073a57;}
+    .muted{color:var(--muted); font-size:0.95rem; line-height:1.6;}
+
+    ul.clean{list-style:none; padding:0; margin:0;}
+    ul.clean li{margin:8px 0; display:flex; align-items:flex-start; gap:10px; color:#2b475a;}
+    .dot{min-width:22px; height:22px; border-radius:6px; background:var(--accent-weak); display:inline-flex; align-items:center; justify-content:center; color:var(--accent-2); font-weight:700; font-size:0.8rem;}
+
+    /* ---------- ERP Modules grid ---------- */
+    .modules{display:grid; gap:14px; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); margin-top:14px;}
+    .module{padding:12px; border-radius:10px; border:1px solid #eef6ff; background:linear-gradient(180deg,#fff,#fbfdff);}
+
+    /* ---------- IoT / Digital Twin ---------- */
+    .dt{display:flex; gap:18px; align-items:flex-start; margin-top:16px; flex-wrap:wrap;}
+    .dt .media{flex:0 0 380px;}
+    .dt .copy{flex:1; min-width:260px;}
+
+    /* ---------- Automation & Ops cards ---------- */
+    .ops-grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:12px;}
+    .ops-card{padding:16px; border-left:6px solid var(--accent-weak); border-radius:8px; background:linear-gradient(180deg,#fff,#f8fbff);}
+    .ops-card h5{margin:0 0 8px; color:#05304a;}
+    .ops-card p{margin:0; color:var(--muted);}
+
+    /* ---------- Digital transformation small cards ---------- */
+    .dt-cards{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); margin-top:12px;}
+    .dt-small{padding:12px; border-radius:10px; text-align:center; border:1px solid #eef6ff; background:transparent; font-weight:600; color:#073a57;}
+
+    /* ---------- Ratecard tile ---------- */
+    .ratecard{display:flex; justify-content:center; margin:22px 0;}
+    .ratecard .tile{width:220px; padding:18px; text-align:center; border-radius:12px; background:linear-gradient(180deg,#ffffff,#f7fbff); border:1px solid #e6f0fb; box-shadow:0 8px 20px rgba(9,49,91,0.04);}
+    .ratecard .tile h4{margin:8px 0 6px; color:#073a57;}
+    .ratecard .tile p{margin:0;color:var(--muted);}
+
+    /* ---------- CTA Footer ---------- */
+    .cta-hero{background:linear-gradient(90deg,#0a66c2 0%, #075aa6 100%); color:white; padding:24px; border-radius:12px; display:flex; gap:18px; align-items:center; justify-content:space-between; margin:28px 0;}
+    .cta-hero h3{margin:0; font-size:1.25rem;}
+    .cta-hero p{margin:4px 0 0; color:rgba(255,255,255,0.92); max-width:640px;}
+    .footer{margin-top:18px; color:var(--muted); font-size:0.95rem; text-align:center;}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:880px){
+      .hero{flex-direction:column;}
+      .hero-right{width:100%;}
+      .dt{flex-direction:column;}
+    }
+    @media (max-width:520px){
+      .cols-3{grid-template-columns:1fr;}
+      .cols-2{grid-template-columns:1fr;}
+      .cols-4{grid-template-columns:repeat(2,1fr);}
+      .grid{gap:12px;}
+    }
+  </style>
+</head>
 <body>
-  <div id="header-placeholder"></div>
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text">
-        <span class="hero-subtitle">Focused Expertise. Adaptive Solutions.</span>
-        <h1 class="hero-title">ADAM Consult</h1>
-        <h2 class="hero-subtitle-large">Comprehensive Engineering & Sustainable Infrastructure Consulting Services</h2>
-        <div class="hero-image">
-        <img src="../images/greetings.jpg" 
-         alt="Greetings !!! ADAM Consult is Empowering Industries with Intelligent Infrastructure and Sustainable Digital Transformation." />
-        </div>
-        <p class="hero-description">
-         Integrating Industrial Infrastructure, Bizsuite-ERP, IoT, and Digital Twin technologies to deliver real‑time intelligence, predictive insights, and energy‑efficient operations - driving sustainable growth and excellence. <br> We can help your organization successfully migrate legacy ERP applications to the cloud, redesign processes to leverage data, AI and automation, and transform finance into a competitive advantage within your business.</p>
+  <div class="wrap">
 
-        <p>We align every solution with your business objectives - because your success fuels ours.</p>
-        <p>🤝 Partner with us to power your progress.</p>
-        <div class="hero-buttons">
-          <a href="about.html" class="btn btn-primary">Get Started</a>
-          <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <span class="eyebrow">BizSuite • ERP & Automation</span>
+        <h1 id="hero-heading">BizSuite ERP — Cloud ERP, AI & Process Automation</h1>
+        <p class="lead">Modular ERP designed for growing enterprises — Finance, Inventory, Sales, Projects, HRMS and Production — with built-in automation, RPA, and CloudOps for resilient digital operations.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Get Started</a>
+          <a class="btn btn-outline" href="../currentaffairs/2808rc.html">View Ratecard</a>
         </div>
-        <div class="certification-badges">
-          <span class="badge">A Trusted Partner</span>
+
+        <div class="hero-meta" style="margin-top:14px;">
+          <strong>Highlights:</strong> Cloud migration & hybrid deployments • AI-driven workflows • RPA for high-volume tasks • DevOps & CI/CD for ERP releases.
         </div>
       </div>
-      <div class="hero-services">
-        <div class="service-card">
-          <i class="fa-solid fa-database"></i>
-          <h3>Composite Industry Soln.</h3>
-          <p>
-            Infrastructure build and operations: Comprehensive planning, design, and management of industrial and commercial facilities, ensuring efficiency, compliance, and operational excellence.
-          </p>
-          <a href="../currentaffairs/land-infrastructure.html" class="btn btn-secondary">Select</a>
-        </div>
-        <div class="service-card">
-          <i class="fa-solid fa-industry"></i>
-          <h3>Sustainability Intelligence</h3>
-          <p>
-            Sustainability, audits & energy optimization: In-depth facility audits, asset lifecycle analysis, and implementation of sustainable practices to reduce costs, improve safety, and align with ESG goals.
-          </p>
-          <a href="../services/sustainability-solutions.html" class="btn btn-secondary">Select</a>
-        </div>
-        <div class="service-card">
-          <i class="fa-solid fa-network-wired"></i>
-          <h3>Digital Enterprise</h3>
-          <p>
-            Digital transformation: Driving enterprise growth by modernizing IT, adopting cloud, securing systems, and digitizing processes tailored for industrial and service sectors.
-          </p>
-          <a href="../services/digital-transformation.html" class="btn btn-secondary">Select</a>
-        </div>
-        <div class="service-card">
-          <i class="fa-solid fa-gears"></i>
-          <h3>Smart Automation</h3>
-          <p>
-            IoT, mechatronics & control systems: Intelligent automation using IoT, embedded systems, robotics, and smart controls for operational agility and predictive performance.
-          </p>
-          <a href="../services/process-automation.html" class="btn btn-secondary">Select</a>
+
+      <div class="hero-right">
+        <div class="card" aria-hidden="true">
+          <img src="../images/erp1.png" alt="BizSuite ERP overview" style="border-radius:8px;"/>
+          <div style="margin-top:10px;">
+            <strong style="color:#05304a;">BizSuite ERP — Modular by Design</strong>
+            <div style="font-size:0.95rem; color:var(--muted); margin-top:8px;">
+              Scalable modules, fast integrations, and engineered for secure cloud or on-prem deployments.
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-   <section class="expertise">
-  <div class="container">
-    <div class="section-header">
-      <h2>Strategic Solutions for the Modern Enterprise</h2>
-      <p>ADAM Consult offers a diverse range of services designed to optimize performance and drive innovation across various sectors.</p>
-    </div>
-    <div class="expertise-grid">
-      <div class="expertise-card">
-    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
-      <h3>Project Management & Commissioning</h3>
-      <p>Delivering end-to-end project leadership from land acquisition and liaisoning through plant erection, commissioning, and stabilization.</p>
-      <ul class="feature-list">
-        <li>Comprehensive land acquisition and regulatory liaison</li>
-        <li>Execution of data center and plant infrastructure projects</li>
-        <li>Ensuring effective commissioning and operational stability</li>
-      </ul>
+    </section>
+
+    <!-- PARTNER -->
+    <section class="partner" aria-labelledby="partner-heading">
+      <div class="partner-logo">
+        <img src="../images/partner-silk-logo.png" alt="Smartinfologiks logo" style="max-width:76px; max-height:76px;">
       </div>
-      <div class="expertise-card">
-        <div class="card-icon"><i class="fas fa-cogs"></i></div>
-        <h3>Engineering Solutions</h3>
-        <p>Delivering customized engineering solutions that enhance efficiency and productivity.</p>
-        <ul class="feature-list">
-          <li>Process optimization</li>
-          <li>Technical implementation</li>
-          <li>Quality assurance</li>
-        </ul>
+      <div>
+        <h3 id="partner-heading">Smartinfologiks — BizSuite ERP Partnership</h3>
+        <p class="muted">An affordable, modular ERP platform tailored for Finance, Inventory, Manufacturing, Education, Healthcare and service businesses — integrated with ADAM Consult's automation and digital ops services.</p>
       </div>
-      <div class="expertise-card">
-        <div class="card-icon"><i class="fas fa-search"></i></div>
-        <h3>Process Audits</h3>
-        <p>Conducting thorough evaluations to identify areas for improvement and implement effective solutions.</p>
-        <ul class="feature-list">
-          <li>Comprehensive assessment</li>
-          <li>Compliance verification</li>
-          <li>Performance enhancement</li>
-        </ul>
+    </section>
+
+    <!-- ERP Modules -->
+    <section class="card" aria-labelledby="modules-heading" style="margin-top:18px;">
+      <h3 id="modules-heading" style="margin:0 0 8px 0; color:#05243a;">Core ERP Modules</h3>
+      <p class="muted">Complete coverage across essential business functions — deploy module-by-module and scale as you grow.</p>
+
+      <div class="modules" style="margin-top:12px;">
+        <div class="module">
+          <strong>Finance & Accounting</strong>
+          <div class="muted" style="margin-top:6px;">G/L, AR/AP, Multi-entity consolidation, Payments, Taxation & Compliance.</div>
+        </div>
+        <div class="module">
+          <strong>Inventory & Warehouse</strong>
+          <div class="muted" style="margin-top:6px;">Stock movements, batch & lot tracking, warehouse locations, reorder automation.</div>
+        </div>
+        <div class="module">
+          <strong>Sales & CRM</strong>
+          <div class="muted" style="margin-top:6px;">Leads, opportunities, quotations, order-to-cash automation and customer analytics.</div>
+        </div>
+        <div class="module">
+          <strong>Production & MRP</strong>
+          <div class="muted" style="margin-top:6px;">Bill of Materials, work orders, scheduling, shop-floor integration.</div>
+        </div>
+        <div class="module">
+          <strong>Projects & Services</strong>
+          <div class="muted" style="margin-top:6px;">Project accounting, timesheets, resource allocation and WIP management.</div>
+        </div>
+        <div class="module">
+          <strong>HRMS & Payroll</strong>
+          <div class="muted" style="margin-top:6px;">Employee lifecycle, attendance, payroll, statutory compliance and self-service.</div>
+        </div>
+        <div class="module">
+          <strong>Procurement</strong>
+          <div class="muted" style="margin-top:6px;">Vendor management, purchase orders, approvals and supplier performance analytics.</div>
+        </div>
+        <div class="module">
+          <strong>Maintenance & Assets</strong>
+          <div class="muted" style="margin-top:6px;">Asset register, preventive maintenance schedules, & breakdown workflows.</div>
+        </div>
       </div>
+    </section>
 
-      <div class="expertise-card">
-        <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
-        <h3>Product Marketing</h3>
-        <p>Developing targeted marketing strategies to maximize product reach and impact.</p>
-        <ul class="feature-list">
-          <li>Strategic positioning</li>
-          <li>Omni-channel marketing strategy</li>
-          <li>Enterprise go-to-market & B2B proposal support</li>
-        </ul>
+    <!-- ERP + IoT + Digital Twin -->
+    <section class="card" aria-labelledby="dt-heading" style="margin-top:18px;">
+      <h3 id="dt-heading" style="margin:0 0 8px 0; color:#05243a;">Integrated ERP — IoT — Digital Twin</h3>
+      <p class="muted">Bridge operational data with enterprise systems to enable closed-loop automation, predictive maintenance, and energy-aware decisions.</p>
+
+      <div class="dt" style="margin-top:12px;">
+        <div class="media">
+          <img src="../images/digital-twin-architecture.png" alt="Digital Twin architecture" style="border-radius:10px;">
+        </div>
+
+        <div class="copy">
+          <ul class="clean" style="margin-top:6px;">
+            <li><span class="dot">1</span><div><strong>Real-time Asset Telemetry</strong><div class="muted">Live sensor data flows into ERP dashboards for visibility and automated actions.</div></div></li>
+            <li><span class="dot">2</span><div><strong>Digital Twin Simulations</strong><div class="muted">What-if scenarios to optimize capacity, energy consumption and production schedules.</div></div></li>
+            <li><span class="dot">3</span><div><strong>Closed-loop Actions</strong><div class="muted">Insights feed automated approvals, replenishment triggers and maintenance tickets in ERP.</div></div></li>
+            <li><span class="dot">4</span><div><strong>ESG & Compliance Dashboards</strong><div class="muted">Integrated reporting for energy, emissions and regulatory metrics (optional module).</div></div></li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <div class="expertise-card">
-        <div class="card-icon"><i class="fas fa-digital-tachograph"></i></div>
-        <h3>Cloud & Digital Transformation</h3>
-        <p>Enterprise-grade modernization through integrated cloud migration and digital technology adoption.</p>
-        <ul class="feature-list">
-          <li>Technology assessment & tailored hybrid cloud integration</li>
-          <li>Digital strategy and implementation support</li>
-          <li>Security compliance and AI-based cloud cost control</li>
-        </ul>
+    <!-- IT Automation / Digital Ops -->
+    <section style="margin-top:18px;">
+      <div class="card" aria-labelledby="ops-heading">
+        <h3 id="ops-heading" style="margin:0 0 6px 0; color:#05243a;">IT Automation & Digital Operations</h3>
+        <p class="muted">Operationalize ERP with automation across workflows, infrastructure and release pipelines — reducing manual effort and increasing reliability.</p>
+
+        <div class="ops-grid" style="margin-top:12px;">
+          <div class="ops-card">
+            <h5>AI-Driven Workflows</h5>
+            <p>Predictive routing, anomaly detection, auto-suggested approvals and demand forecasting embedded into ERP processes.</p>
+          </div>
+
+          <div class="ops-card">
+            <h5>Robotic Process Automation (RPA)</h5>
+            <p>Automate high-volume data entry, invoice processing, reconciliations and inter-system synchronization with bots orchestrated from ERP.</p>
+          </div>
+
+          <div class="ops-card">
+            <h5>DevOps for ERP</h5>
+            <p>CI/CD pipelines for ERP releases, automated testing, configuration management, and safe rollouts across environments.</p>
+          </div>
+
+          <div class="ops-card">
+            <h5>CloudOps & Infrastructure Automation</h5>
+            <p>Auto-scaling, monitoring, backup & DR, IaC (Terraform/CloudFormation) and cost-aware resource management for ERP platforms.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="expertise-card">
-        <div class="card-icon"><i class="fas fa-robot"></i></div>
-        <h3>AI-Powered Solutions</h3>
-        <p>Leveraging artificial intelligence to enhance decision-making and operational efficiency.</p>
-        <ul class="feature-list">
-          <li>AI implementation</li>
-          <li>Process automation</li>
-          <li>Predictive analytics</li>
-        </ul>
+    <!-- Digital Transformation Cards -->
+    <section style="margin-top:18px;">
+      <div class="card" aria-labelledby="dt-small-heading">
+        <h3 id="dt-small-heading" style="margin:0 0 8px 0; color:#05243a;">Digital Transformation Capabilities</h3>
+        <p class="muted">Complementary services that accelerate ERP value realization.</p>
+
+        <div class="dt-cards" style="margin-top:12px;">
+          <div class="dt-small">Digital Workplace</div>
+          <div class="dt-small">Data & Analytics</div>
+          <div class="dt-small">API Integrations</div>
+          <div class="dt-small">Mobile Apps</div>
+          <div class="dt-small">Cybersecurity Basics</div>
+          <div class="dt-small">Cloud Migration Support</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-<section class="esg-cards">
-  <div class="card">
-    <div class="icon" aria-hidden="true">🌍</div>
-    <h3>Environmental</h3>
-    <p>Energy efficiency, renewable adoption, waste & water management</p>
-  </div>
+    </section>
 
-  <div class="card">
-    <div class="icon" aria-hidden="true">👥</div>
-    <h3>Social</h3>
-    <p>Employee wellbeing, diversity & inclusion, community engagement</p>
-  </div>
-
-  <div class="card">
-    <div class="icon" aria-hidden="true">⚖️</div>
-    <h3>Governance</h3>
-    <p>Ethical practices, transparency, compliance & reporting</p>
-  </div>
-
-  <div class="card">
-    <div class="icon" aria-hidden="true">✅</div>
-    <h3>Sustainability</h3>
-    <p>Long-term value creation through ESG-driven strategies</p>
-  </div>
-</section>
-
-<style>
-  .esg-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .esg-cards .card {
-    border: 1px solid #e6e6e6;
-    border-radius: 16px;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-    transition: transform .2s ease, box-shadow .2s ease;
-  }
-  .esg-cards .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-  }
-  .esg-cards .icon {
-    font-size: 28px;
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-  .esg-cards h3 {
-    margin: 0 0 8px;
-    font-size: 1.1rem;
-    color: #0f3c2f; /* deep green */
-  }
-  .esg-cards p {
-    margin: 0;
-    color: #4a5568;
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-
-  /* Optional subtle gradient accent */
-  .esg-cards .card:nth-child(1) { border-top: 4px solid #2e7d32; }
-  .esg-cards .card:nth-child(2) { border-top: 4px solid #1976d2; }
-  .esg-cards .card:nth-child(3) { border-top: 4px solid #6a1b9a; }
-  .esg-cards .card:nth-child(4) { border-top: 4px solid #00897b; }
-  @media (max-width: 480px) {
-    .esg-cards { padding: 12px; gap: 12px; }
-    .esg-cards .card { padding: 16px; }
-  }
-</style>
-<section style="text-align: center; padding: 20px 0;">
-  <a href="../images/industry4.0.png" target="_blank">
-    <img src="../images/industry4.0.png" alt="Industry 4.0" style="max-width: 90%; height: auto; border-radius: 8px;">
-  </a>
-</section>
-<div class="news-article" style="max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6;">
-  <h3 style="font-size: 1.8rem; margin-bottom: 15px; color: #0a2a5c;">Integrated ERP–IoT–Digital Twin</h3>
-
-  <p style="font-size: 16px; color: #2c3e50; line-height: 1.6; margin-bottom: 30px;">
-    Our platform unifies real-time IoT data, enterprise ERP intelligence, and Digital Twin simulations
-    to deliver measurable ESG outcomes, optimize energy performance, and ensure compliance across
-    data centers, industrial plants, and logistics networks.
-  </p>
-
-  <img src="../images/digital-twin-architecture.png" alt="ERP IoT Digital Twin Sustainability Framework" style="max-width: 90%; height: auto; border-radius: 8px; margin-bottom: 30px;" />
-
-  <ul style="list-style: none; padding: 0; margin: 0; text-align: left; display: inline-block;">
-    <li style="font-size: 16px; color: #34495e; margin-bottom: 10px;">
-      <i class="fas fa-check-circle" style="color: #1a5276; margin-right: 8px;"></i>
-      Digital Twins of assets, energy systems, and logistics networks
-    </li>
-    <li style="font-size: 16px; color: #34495e; margin-bottom: 10px;">
-      <i class="fas fa-check-circle" style="color: #1a5276; margin-right: 8px;"></i>
-      AI-driven simulation for emission and energy optimization
-    </li>
-    <li style="font-size: 16px; color: #34495e; margin-bottom: 10px;">
-      <i class="fas fa-check-circle" style="color: #1a5276; margin-right: 8px;"></i>
-      Closed-loop feedback into ERP for real-time decision-making
-    </li>
-    <li style="font-size: 16px; color: #34495e; margin-bottom: 10px;">
-      <i class="fas fa-check-circle" style="color: #1a5276; margin-right: 8px;"></i>
-      Integrated ESG dashboards and compliance mapping
-    </li>
-  </ul>
-</div>
-<section>
-
-    <div class="news-article" style="max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; font-family: Arial, sans-serif;">
-      <!-- Logo and Heading Row -->
-      <div style="display: flex; align-items: center; gap: 20px; justify-content: center; margin-bottom: 15px;">
-        <img src="../images/partner-silk-logo.png" alt="Smartinfologiks"
-          style="max-width: 100px; height: auto; background-color: rgba(0,0,0,0.15); padding: 6px; border-radius: 6px; box-shadow: 0 0 6px rgba(0,0,0,0.18);" />
-        <h3 style="font-size: 2rem; color: #0a2a5c; margin: 0;">
-          Smartinfologiks | BizSuite-ERP Solutions
-        </h3>
-      </div
-    <p style="text-align: center; margin-bottom: 15px;">
-      A simple, affordable ERP built for growing businesses — covering finance, inventory, compliance, and more with a modular, budget-friendly approach.
-    </p>
-    <p style="text-align: center; margin-bottom: 25px;">
-      Industry-specific solutions for Education, Healthcare, Manufacturing, and other verticals with modular fitment from the below modules:
-    </p>
-    <div style="text-align: center; margin-bottom: 30px;">
-      <img src="../images/erp1.png" alt="BizSuite ERP" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-    </div>
-    <div style="display: flex; justify-content: center; margin-bottom: 30px;">
-      <a href="../currentaffairs/2808rc.html" class="card" style="text-decoration: none; text-align: center; border: 1px solid #ddd; border-radius: 10px; padding: 20px; width: 200px; transition: all 0.3s; background-color: #f9f9f9;">
-        <div class="icon" aria-hidden="true" style="font-size: 2rem; margin-bottom: 10px;">✅</div>
-        
-        <h4 style="margin: 0 0 10px 0; color: #0a2a5c;">Ratecards</h4>
-        <p style="margin: 0; font-size: 0.9rem; color: #333;">Enterprise Platform and ERP Ratecard</p>
+    <!-- Ratecard -->
+    <div class="ratecard">
+      <a href="../currentaffairs/2808rc.html" class="tile" style="text-decoration:none;">
+        <div class="tile card" role="button" aria-label="View ERP Ratecard">
+          <div style="font-size:30px; margin-bottom:8px;">✅</div>
+          <h4>ERP Ratecard</h4>
+          <p class="muted">Enterprise platform & module pricing — click to view detailed ratecards and licensing options.</p>
+        </div>
       </a>
     </div>
 
-    <p style="text-align: justify; margin-top: 20px; line-height: 1.8;">
-      BizSuite ERP is a scalable, modular platform designed to streamline and automate core business functions including Sales, CRM, Accounts, Projects, Payroll, HRMS, Inventory, Production, Maintenance, and more. Built for seamless integration and performance, it provides businesses with real-time visibility, intelligent workflows, and centralized control across all departments.
-    </p>
-    
-  </div>
-</section>
-  <style>
-  .news-article {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    text-align: center;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-  }
+    <!-- Industry 4.0 Image accent -->
+    <section style="text-align:center; margin-top:8px;">
+      <a href="../images/industry4.0.png" target="_blank" style="display:inline-block; border-radius:10px; overflow:hidden;">
+        <img src="../images/industry4.0.png" alt="Industry 4.0" style="max-width:980px;">
+      </a>
+    </section>
 
-  .news-article h3 {
-    font-size: 24px;
-    color: #2c3e50;
-    margin-bottom: 16px;
-  }
-
-  .news-article p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 16px;
-  }
-
-  .news-article img {
-    max-width: 90%;
-    height: auto;
-    border-radius: 8px;
-    margin: 20px 0;
-      .news-article a.card {
-    display: block;
-    text-decoration: none;
-    background: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 16px;
-    margin-top: 20px;
-    transition: 0.3s;
-  }
-
-  .news-article a.card:hover {
-    background: #eef6ff;
-    border-color: #2c3e50;
-  }
-
-  .news-article .icon {
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-</style>
-
-  <div class="news-article" style="display: none;">
-    <h3> Smart Waste Management & Circular Resource Optimization</h3>
-    <p><strong>Strategic advisory across the waste value chain</strong> — transforming waste into value through data intelligence, circularity, and ESG-driven planning.</p>
-    <ul>
-      <li>AI-Enhanced Segregation & Intelligent Tracking: Implementation of AI/IoT-based systems for real-time waste profiling and automation at source across institutions and industry setups.</li>
-      <li>Circular Waste-to-Value Systems: Consulting for reuse pathways, recovery models, and integration with recycling/MRF partners to enable closed-loop operations.</li>
-      <li>ESG Metrics & Zero-Waste Roadmaps: Compliance with SWM Rules, EPR, and sustainability disclosures with audit-ready traceability and CSR alignment.</li>
-    </ul>
-  </div>
-
-    <div class="container">
-        <div class="section-header">
-            <h2>Our Consulting & Infrastructure Services</h2>
-            <p>Comprehensive solutions at the intersection of information technology, industrial automation, and energy efficiency to drive innovation and sustainable growth.</p>
+    <!-- Final CTA -->
+    <section style="margin-top:20px;">
+      <div class="cta-hero" role="region" aria-labelledby="final-cta">
+        <div>
+          <h3 id="final-cta">Ready to Modernize Your ERP & Operations?</h3>
+          <p>Book a discovery call — we’ll assess your current ERP landscape, propose a module roadmap, and outline an automation plan that delivers measurable ROI.</p>
         </div>
-        <div class="service-tabs">
-            <div class="tab-navigation">
-                <button class="tab-btn active" data-tab="tab1">Strategic Consulting</button>
-                <button class="tab-btn" data-tab="tab2">Composite Infrastructure</button>
-                <button class="tab-btn" data-tab="tab3">Digital Transformation</button>
-                <button class="tab-btn" data-tab="tab4">Sustainability Solutions</button>
-                <button class="tab-btn" data-tab="tab5">Process Automation</button>
-                <button class="tab-btn" data-tab="tab6">Project and Contract Management</button>
-            </div>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="tab1">
-    <h3>Comprehensive Engineering & Sustainable Infrastructure, Digital Transformation Consulting</h3>
-    <p>Delivering next-generation solutions that connect intelligent applications, green infrastructure, and resilient digital ecosystems across industries.</p
-    <div class="service-highlights">
-      <div class="service-highlight-item">
-        <div class="icon">
-          <i class="fas fa-industry"></i>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a href="mailto:hello@adamconsult.com" class="btn btn-outline" style="background:transparent;color:white;border:1px solid rgba(255,255,255,0.22);">Email Us</a>
+          <a href="https://wa.me/918779639965" target="_blank" class="btn btn-primary">Chat on WhatsApp</a>
         </div>
-        <h4>Sector-Specific Insight. Sustainable Impact by Design.</h4>
-        <p style="font-weight: bold; font-size: 20px; color: #00796B;">Industries We Serve:</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check-circle"></i> Energy & Utilities (Smart Grids, Renewables, Microgrids)</li>
-          <li><i class="fas fa-check-circle"></i> Technology, Cloud & Software Platforms</li>
-          <li><i class="fas fa-check-circle"></i> Telecom, Media & Smart Connectivity</li>
-          <li><i class="fas fa-check-circle"></i> Manufacturing & Industry 4.0</li>
-          <li><i class="fas fa-check-circle"></i> Transportation, Aviation & Mobility</li>
-          <li><i class="fas fa-check-circle"></i> Infrastructure, Construction & Smart Cities</li>
-          <li><i class="fas fa-check-circle"></i> Banking, Financial Services & NBFCs</li>
-          <li><i class="fas fa-check-circle"></i> Retail, E-commerce & Omni-channel Experience</li>
-          <li><i class="fas fa-check-circle"></i> Healthcare, Pharma & Life Sciences</li>
-          <li><i class="fas fa-check-circle"></i> Education, Research & EdTech</li>
-          <li><i class="fas fa-check-circle"></i> Logistics, Ports & Supply Chain</li>
-          <li><i class="fas fa-check-circle"></i> Food, Beverage & Consumer Goods</li>
-          <li><i class="fas fa-check-circle"></i> Digital & AI-Driven Emerging Sectors</li>
-        </ul>
       </div>
-      <div class="service-highlight-item">
-        <div class="icon">
-          <i class="fas fa-network-wired"></i>
-        </div>
-        <h4>Functional Excellence. Engineered for Digital and Sustainable Transformation.</h4>
-        <p style="font-weight: bold; font-size: 20px; color: #D35400;">Functional Domains:</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check-circle"></i> Strategy, Transformation & Organization Design</li>
-          <li><i class="fas fa-check-circle"></i> Application Engineering & DevSecOps</li>
-          <li><i class="fas fa-check-circle"></i> Sustainable Infrastructure & Cloud Modernization</li>
-          <li><i class="fas fa-check-circle"></i> Data, AI & Business Intelligence</li>
-          <li><i class="fas fa-check-circle"></i> Innovation, R&D & Emerging Tech Integration</li>
-          <li><i class="fas fa-check-circle"></i> Finance, Cost Control & ESG Reporting</li>
-          <li><i class="fas fa-check-circle"></i> HR, Workforce Transformation & Digital Talent</li>
-          <li><i class="fas fa-check-circle"></i> Customer Experience (CX) & Service Design</li>
-          <li><i class="fas fa-check-circle"></i> Procurement, Operations & Supply Resilience</li>
-          <li><i class="fas fa-check-circle"></i> Audit, Governance & Compliance Automation</li>
-          <li><i class="fas fa-check-circle"></i> Product Lifecycle, Engineering & PLM Systems</li>
-          <li><i class="fas fa-check-circle"></i> PMO, Delivery Management & Change Control</li>
-        </ul>
-      </div>
-    </div>
-    <div class="service-cta">
-      <a href="services/technology-infrastructure.html" class="btn btn-secondary">Explore Services</a>
-    </div>
-  </div>
-</div>
-  <div class="tab-pane" id="tab2">
-  <h3>Composite Industry & Infrastructure</h3>
-  <p>Comprehensive infrastructure consulting and solutions for robust, scalable, and sustainable developments including industrial, commercial, and data center facilities.</p>
 
-  <div class="service-highlights">
-
-    <!-- Data Centers Consultancy -->
-    <div class="service-highlight-item">
-      <div class="icon">
-        <i class="fas fa-industry"></i>
-      </div>
-      <h4>Data Centers Consultancy</h4>
-      <p>End-to-end planning, design, and lifecycle management for high-availability data center environments.</p>
-      <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> Site Selection & Feasibility Analysis</li>
-        <li><i class="fas fa-check-circle"></i> Datacenter Design & Engineering</li>
-        <li><i class="fas fa-check-circle"></i> Project Management & Build Support</li>
-        <li><i class="fas fa-check-circle"></i> Smart Infrastructure Integration</li>
-      </ul>
-    </div>
-    <div class="service-highlight-item">
-      <div class="icon">
-        <i class="fas fa-building"></i>
-      </div>
-      <h4>Industrial Land & Infrastructure Development</h4>
-      <p>End-to-end solutions for site selection, land acquisition, infrastructure planning, construction, and regulatory compliance for industrial and data center projects.</p>
-      <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> Site Selection & Feasibility</li>
-        <li><i class="fas fa-check-circle"></i> Legal Due Diligence</li>
-        <li><i class="fas fa-check-circle"></i> Master Planning & Construction</li>
-        <li><i class="fas fa-check-circle"></i> Compliance & Cost Optimization</li>
-      </ul>
-      <a href="../currentaffairs/land-infrastructure.html" class="service-link">Learn More</a>
-    </div>
+      <div class="footer">© ADAM Consult — BizSuite ERP & IT Automation • All rights reserved</div>
+    </section>
 
   </div>
 
-  <div class="service-cta">
-    <a href="services/contracts.html" class="btn btn-secondary">Explore Services</a>
-  </div>
-</div>
-<div class="tab-pane" id="tab3">
-    <h3>Digital Transformation</h3>
-    <p>Advanced digital solutions to transform your business operations and technology landscape.</p>
-    <div class="service-highlights">
-
-        <div class="service-highlight-item">
-            <div class="icon"><i class="fas fa-sitemap"></i></div>
-            <h4>Enterprise IT Strategy</h4>
-            <p>Strategic planning and implementation of comprehensive IT solutions for your organization.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> IT Infrastructure Assessment & Planning</li>
-                <li><i class="fas fa-check-circle"></i> Hybrid Cloud Strategy & Migration</li>
-                <li><i class="fas fa-check-circle"></i> Digital Workspace Solutions</li>
-                <li><i class="fas fa-check-circle"></i> Enterprise Application Integration</li>
-            </ul>
-        </div>
-
-        <div class="service-highlight-item">
-            <div class="icon"><i class="fas fa-code"></i></div>
-            <h4>Web Application Engineering</h4>
-            <p>Custom web applications that streamline business processes and enhance operational efficiency.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> Full-stack web development</li>
-                <li><i class="fas fa-check-circle"></i> API-first architecture</li>
-                <li><i class="fas fa-check-circle"></i> UX/UI driven workflows</li>
-                <li><i class="fas fa-check-circle"></i> Maintenance & scaling support</li>
-             </ul>
-        </div>
-  </div>
-    <div class="service-cta">
-          <a href="services/contracts.html" class="btn btn-secondary">Explore Services</a>
-    </div>
-</div>
-
-<div class="tab-pane" id="tab4">
-    <h3>Sustainability Solutions</h3>
-    <p>Achieve compliance, efficiency, and ESG milestones through our comprehensive sustainability solutions.</p>
-    <div class="service-highlights">
-
-        <div class="service-highlight-item">
-            <div class="icon"><i class="fas fa-industry"></i></div>
-            <h4>Industrial Facility Audits</h4>
-            <p>Comprehensive assessment of industrial facilities to identify efficiency and compliance opportunities.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> Detailed industrial process analysis</li>
-                <li><i class="fas fa-check-circle"></i> Regulatory compliance verification</li>
-                <li><i class="fas fa-check-circle"></i> Resource utilization assessment</li>
-                <li><i class="fas fa-check-circle"></i> Improvement recommendation reports</li>
-            </ul>
-        </div>
-
-        <div class="service-highlight-item">
-            <div class="icon"><i class="fas fa-bolt"></i></div>
-            <h4>Energy Management & Metering</h4>
-            <p>Maximize control and visibility over energy consumption through real-time data and automation.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> IoT-enabled smart metering</li>
-                <li><i class="fas fa-check-circle"></i> Real-time data visualization</li>
-                <li><i class="fas fa-check-circle"></i> Predictive energy analytics</li>
-                <li><i class="fas fa-check-circle"></i> Integration with EMS/BMS platforms</li>
-             </ul>
-        </div>
-  </div>
-    <div class="service-cta">
-          <a href="services/contracts.html" class="btn btn-secondary">Explore Services</a>
-  
-    </div>
-</div>
-<div class="tab-pane" id="tab5">
-    <h3>Process Automation</h3>
-    <p>Streamline operations, reduce errors, and boost productivity through intelligent automation of your business processes.</p>
-    <div class="service-highlights">
-        <div class="service-highlight-item">
-            <div class="icon">
-                <i class="fas fa-project-diagram"></i> <!-- Updated icon -->
-            </div>
-            <h4>Workflow Automation</h4>
-            <p>Transform manual processes into efficient, error-free automated workflows that save time and resources.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> Business process mapping and automation</li>
-                <li><i class="fas fa-check-circle"></i> Custom workflow solutions</li>
-                <li><i class="fas fa-check-circle"></i> Approval chain automation</li>
-                <li><i class="fas fa-check-circle"></i> Integration with existing enterprise systems</li>
-            </ul>
-        </div>
-
-        <div class="service-highlight-item">
-            <div class="icon">
-                <i class="fas fa-robot"></i>
-            </div>
-            <h4>Intelligent Automation</h4>
-            <p>Enhance your automation with AI and machine learning for adaptive, intelligent process optimization.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> Predictive analytics processes</li>
-                <li><i class="fas fa-check-circle"></i> Smart document processing models</li>
-                <li><i class="fas fa-check-circle"></i> Recommendation and suggestion engines</li>
-                <li><i class="fas fa-check-circle"></i> ML-powered decision-support systems</li>
-            </ul>
-        </div>
-    </div>
-    <div class="service-cta">
-         <a href="services/contracts.html" class="btn btn-secondary">Explore Services</a>
-     
-    </div>
-</div>
-
-<div class="tab-pane" id="tab6">
-    <h3>Project & Contract-Based Technical Services</h3>
-    <p>Scalable, sector-agnostic technical services tailored for time-bound IT initiatives, digital programs, and complex deployments.</p>
-    <div class="service-highlights">
-        <div class="service-highlight-item">
-            <div class="icon">
-                <i class="fas fa-project-diagram"></i>
-            </div>
-            <h4>Flexible IT Project Execution</h4>
-            <p>End-to-end delivery and technical capacity building for project-based, milestone-driven IT services across domains.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> PMO & Deployment Management</li>
-                <li><i class="fas fa-check-circle"></i> Technical Pre-Sales & Proposal Support</li>
-                <li><i class="fas fa-check-circle"></i> Solution & IT Architecture Design</li>
-                <li><i class="fas fa-check-circle"></i> SaaS / Platform Engineering</li>
-                <li><i class="fas fa-check-circle"></i> On-Demand Technical Advisory</li>
-            </ul>
-        </div>
-        <div class="service-highlight-item">
-            <div class="icon">
-                <i class="fas fa-user-cog"></i> <!-- Expert advisory icon -->
-            </div>
-            <h4>Contract-Based Specialist Engagement</h4>
-            <p>Deploy skilled consultants, architects, and engineers under short or long-term contracts for your IT, automation, or platform transformation projects.</p>
-            <ul class="service-features">
-                <li><i class="fas fa-check-circle"></i> Role-based SME Assignment</li>
-                <li><i class="fas fa-check-circle"></i> Contract Staffing for IT & Infra Projects</li>
-                <li><i class="fas fa-check-circle"></i> Project Health Checks & Risk Audits</li>
-                <li><i class="fas fa-check-circle"></i> Skill Augmentation for Agile Teams</li>
-                <li><i class="fas fa-check-circle"></i> Time & Material or Fixed-Model Contracts</li>
-            </ul>
-        </div>
-    </div>
-    <div class="service-cta">
-         <a href="services/contracts.html" class="btn btn-secondary">Explore Services</a>
-      </div>
-    </div>
-          <div class="cta">
-            <a href="https://wa.me/918779639965" target="_blank" class="cta-btn">
-              <li><i class="fab fa-whatsapp"></i> Chat with us for Booking an Advisor </li>
-            </a>
-          </div>
-        </div>
-
-    </div>
-    </div> 
-    </div>
 
     <section class="cta-section">
         <div class="container">
